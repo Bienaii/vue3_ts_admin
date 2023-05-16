@@ -3,12 +3,12 @@
   <router-view></router-view>
 </template>
 <script lang="ts" setup>
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router'
 
-const router = useRouter();
+const router = useRouter()
 const toDashboard = () => {
   router.push({
-    name: "dashboard",
-  });
-};
+    name: 'dashboard'
+  })
+}
 </script>
