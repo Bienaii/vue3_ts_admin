@@ -25,7 +25,7 @@ module.exports = {
     // 可以解析.vue文件
     parser: "vue-eslint-parser", // esprima babel-eslint @typescript-eslint/parser
     parserOptions: {
-        parser: "@typescript-eslint/parser", // 解析ts文件的
+        parser: "@typescript-eslint/parser", //用来解析vue文件中<script>标签中的代码
         ecmaVersion: "latest",
         sourceType: "module"
     },

@@ -12,8 +12,10 @@
     "esModuleInterop": true, // 是否通过为所有导入模块创建命名空间对象，允许CommonJS和ES模块之间的互操作性，开启改选项时，也自动开启allowSyntheticDefaultImports选项，默认：false。
     "lib": ["esnext", "dom"], // 指定项目运行时使用的库。此处为支持esnext和dom语法
     "baseUrl": "./", // 引入包的路径,表示从当前路径开始引入
+    "isolatedModules": true,
     "types": ["element-plus/global"],
     "paths": {
+      // 默认配置在了vite.config.ts中，还需要再这里在配置一次
       "@/*":["src/*"] // @符号的真实含义 还需要配置vite别名 和declare module
     }
   },

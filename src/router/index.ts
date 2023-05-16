@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const routes = [
+const routes:Array<RouteRecordRaw> = [
     {
         path: '/',
         redirect: '/login',
@@ -18,8 +18,11 @@ const routes = [
 ]
 
 const router = createRouter({
-    scrollBehavior: () => ({ top: 0, left: 0 }),
     history: createWebHistory(),
+    scrollBehavior: (to, form, savedPosition) => {
+        if(savedPosition) return savedPosition
+        else return { top: 0 }
+    },
     routes
 })
 
