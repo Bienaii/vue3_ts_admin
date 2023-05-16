@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useIndexStore = defineStore('index', {
   state: () => {
     return {
-      name: 'old name'
+      name: 'hey, young man'
     }
   },
   getters: {

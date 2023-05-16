@@ -8,7 +8,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const toDashboard = () => {
   router.push({
-    name: 'dashboard'
+    name: 'Dashboard'
   })
 }
 </script>

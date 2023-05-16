@@ -8,7 +8,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css' // element-plus组件样式
 
 import 'normalize.css' // css重置初始化
-import './assets/style/common.scss'
+import '@/assets/styles/index.scss' // global css
 
 const app = createApp(App)
 

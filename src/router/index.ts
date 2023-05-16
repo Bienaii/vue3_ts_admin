@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Layout from "@/layout/index.vue";
 
 /**
  * Note: 路由配置项
@@ -43,10 +44,18 @@ export const constantRoutes = [
     component: () => import('@/views/error/404.vue')
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: () => import('@/views/main/index.vue')
-  }
+    path: '',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/main/index.vue'),
+        meta: { title: '首页', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
 ]
 // 动态路由，基于用户权限动态去加载
 export const dynamicRoutes = []
