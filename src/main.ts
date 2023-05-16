@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import router from '@/router'
-import { storage } from "@/utils/storage";
+import { storage } from '@/utils/storage'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css' // element-plus组件样式
