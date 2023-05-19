@@ -1,6 +1,6 @@
 <template>
-	<div class="app-wrapper">
-		<SideBar class="sidebar-container"></SideBar>
+	<div :class="classObj" class="app-wrapper">
+		<SideBar class="sidebar-container" v-if="!sidebar.hide"></SideBar>
 		<div :class="{ hasTagsView: needTagsView }" class="main-container">
 			<div class="fixed-header">
 				<NavBar></NavBar>
@@ -18,9 +18,18 @@ import NavBar from './components/NavBar/index.vue'
 import SideBar from './components/SideBar/index.vue'
 import TagsView from './components/TagsView/index.vue'
 import { useSettingsStore } from '@/store/modules/settings'
+import useAppStore from '@/store/modules/app'
 
 const settingsStore = useSettingsStore()
+const sidebar = computed(() => useAppStore().sidebar)
 const needTagsView = computed(() => settingsStore.tagsView)
+
+// 设置样式
+const classObj = computed(() => ({
+	hideSidebar: !sidebar.value.opened,
+	openSidebar: sidebar.value.opened,
+	withoutAnimation: sidebar.value.withoutAnimation
+}))
 </script>
 
 <style lang="scss" scoped>
