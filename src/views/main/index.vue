@@ -1,6 +1,8 @@
 <template>
-  <h1>{{ indexInfo.name }}</h1>
-  <router-view></router-view>
+  <div>
+    <h1>{{ indexInfo.name }}</h1>
+    <router-view></router-view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'

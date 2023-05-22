@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 const { sideTheme, showSettings, topNav, tagsView, fixedHeader, sidebarLogo } = defaultSettings
 const storageSetting = storage.get('layout-setting') || ''
 
-export const useSettingsStore = defineStore('settings', {
+const useSettingsStore = defineStore('settings', {
 	state: () => ({
 		title: '',
 		theme: storageSetting.theme || '#409EFF',
@@ -25,3 +25,4 @@ export const useSettingsStore = defineStore('settings', {
 		}
 	}
 })
+export default useSettingsStore
