@@ -17,7 +17,7 @@ import AppMain from './components/AppMain/index.vue'
 import NavBar from './components/NavBar/index.vue'
 import SideBar from './components/SideBar/index.vue'
 import TagsView from './components/TagsView/index.vue'
-import { useSettingsStore } from '@/store/modules/settings'
+import useSettingsStore from '@/store/modules/settings'
 import useAppStore from '@/store/modules/app'
 
 const settingsStore = useSettingsStore()
@@ -34,7 +34,7 @@ const classObj = computed(() => ({
 
 <style lang="scss" scoped>
 @import '@/assets/styles/mixin.scss';
-@import '@/assets/styles/variables.scss';
+@import '@/assets/styles/variables.module.scss';
 .app-wrapper {
 	@include clearfix;
 	position: relative;
