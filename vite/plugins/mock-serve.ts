@@ -10,6 +10,6 @@ export default function createMockServe(isMock: boolean, isServer: boolean) {
     //   import { setupProdMockServer } from '../mockServer';
     //   setupProdMockServer();
     // `,
-		// logger: true
+		logger: false
 	})
 }
