@@ -16,6 +16,7 @@ specifiers:
   minimist: ^1.2.8
   mockjs: ^1.1.0
   normalize.css: ^8.0.1
+  nprogress: ^0.2.0
   pinia: ^2.0.35
   sass: ^1.62.1
   typescript: ^5.0.4
@@ -35,6 +36,7 @@ dependencies:
   lodash: 4.17.21
   mockjs: 1.1.0
   normalize.css: 8.0.1
+  nprogress: 0.2.0
   pinia: 2.0.35_n5u4q6hu2kk5qwgbcobf2qywum
   vue: 3.2.36
   vue-router: 4.1.6_vue@3.2.36
@@ -2289,6 +2291,10 @@ packages:
 
   /normalize.css/8.0.1:
     resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
+    dev: false
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: false
 
   /nth-check/2.1.1:

@@ -25,48 +25,48 @@ const mockData: Array<MockMethod> = [
 					{
 						alwaysShow: true,
 						hidden: false,
-						name: 'Monitor',
 						path: '/monitor',
+						name: 'Monitor',
 						component: 'Layout',
-						redirect: '/monitor/operateLog',
+						meta: { title: '日志管理', icon: 'monitor' },
 						children: [
 							{
-								path: '/operateLog',
+								path: 'operateLog',
 								name: 'OperateLog',
-                hidden: false,
-								component: '/monitor/operateLog/index',
-								meta: { title: '操作日志', icon: 'setting' }
+								hidden: false,
+								component: 'monitor/operateLog/index',
+								meta: { title: '操作日志', icon: 'log' }
 							},
 							{
-								path: '/loginLog',
+								path: 'loginLog',
 								name: 'LoginLog',
-                hidden: false,
-								component: '/monitor/LoginLog/index.vue',
-								meta: { title: '登录日志', icon: 'user' }
+								hidden: false,
+								component: 'monitor/loginLog/index',
+								meta: { title: '登录日志', icon: 'log' }
 							}
 						]
 					},
 					{
-            alwaysShow: true,
+						alwaysShow: true,
 						hidden: false,
-						name: 'Setting',
 						path: '/setting',
+						name: 'Setting',
 						component: 'Layout',
-						redirect: '/setting/user',
+						meta: { title: '系统设置', icon: 'setting' },
 						children: [
 							{
-								path: '/user',
+								path: 'user',
 								name: 'User',
-                hidden: false,
-								component: '@/views/setting/user/index',
+								hidden: false,
+								component: 'setting/user/index',
 								meta: { title: '用户管理', icon: 'user' }
 							},
 							{
-								path: '/role',
+								path: 'role',
 								name: 'Role',
-                hidden: false,
-								component: '@/views/setting/role/index',
-								meta: { title: '角色管理', icon: 'role' }
+								hidden: false,
+								component: 'setting/role/index',
+								meta: { title: '角色管理', icon: 'user' }
 							}
 						]
 					}

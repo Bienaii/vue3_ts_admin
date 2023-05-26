@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Layout from "@/layout/index.vue";
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import Layout from '@/layout/index.vue'
+import usePermissionStore from '@/store/modules/permission'
+import useIndexStore from '@/store'
 
 /**
  * Note: 路由配置项
@@ -24,49 +28,89 @@ import Layout from "@/layout/index.vue";
  */
 
 export const constantRoutes = [
-  {
-    path: '/',
-    redirect: '/dashboard'
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/system/login.vue')
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    component: () => import('@/views/error/404.vue'),
-    redirect: '/404'
-  },
-  {
-    path: '/404',
-    name: '404',
-    component: () => import('@/views/error/404.vue')
-  },
-  {
-    path: '',
-    component: Layout,
-    redirect: '/dashboard',
-    children: [
-      {
-        path: '/dashboard',
-        name: 'Dashboard',
-        component: () => import('@/views/main/index.vue'),
-        meta: { title: '首页', icon: 'dashboard', affix: true }
-      }
-    ]
-  },
+	// {
+	// 	path: '/redirect',
+	// 	component: Layout,
+	// 	hidden: true,
+	// 	children: [
+	// 		{
+	// 			path: '/redirect/:path(.*)',
+	// 			component: () => import('@/views/redirect/index.vue')
+	// 		}
+	// 	]
+	// },
+	{
+		path: '/:pathMatch(.*)*',
+		component: () => import('@/views/error/404.vue'),
+		hidden: true
+	},
+	{
+		path: '',
+		component: Layout,
+		redirect: '/index',
+		children: [
+			{
+				path: '/index',
+				component: () => import('@/views/dashboard/index.vue'),
+				name: 'Index',
+				meta: { title: '首页', icon: 'dashboard', affix: true }
+			}
+		]
+	}
 ]
 // 动态路由，基于用户权限动态去加载
 export const dynamicRoutes = []
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes: constantRoutes,
-  scrollBehavior: (to, form, savedPosition) => {
-    if (savedPosition) return savedPosition
-    else return { top: 0 }
-  }
+	history: createWebHistory(),
+	routes: constantRoutes,
+	scrollBehavior: (to, form, savedPosition) => {
+		if (savedPosition) return savedPosition
+		else return { top: 0 }
+	}
+})
+
+NProgress.configure({ showSpinner: false })
+const whiteList = ['/login', '/register']
+
+router.beforeEach(async (to, from, next) => {
+	NProgress.start()
+	if (to.path === '/login') {
+		next({ path: '/' })
+		NProgress.done()
+	}
+	if (!useIndexStore().username) {
+		await useIndexStore().getUserInfo()
+
+		const accessRoutes = await usePermissionStore().generateRoutes()
+
+		// 根据roles权限生成可访问的路由表
+		accessRoutes.forEach((route) => {
+			router.addRoute(route) // 动态添加可访问路由表
+		})
+		// 避免首次未添加动态路由，匹配404重定向
+		if (!router.hasRoute('404')) {
+			router.addRoute({
+				// 找不到路由重定向到404页面
+				path: '/:pathMatch(.*)',
+				name: '404',
+				component: Layout,
+				redirect: '/404',
+				meta: { title: '' },
+				children: []
+			})
+		}
+		next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
+		// 如果首次或者刷新界面，next(...to, replace: true)会循环遍历路由，
+		// 如果to找不到对应的路由那么他会再执行一次beforeEach((to, from, next))直到找到对应的路由，
+		// 我们的问题在于页面刷新以后异步获取数据，直接执行next()感觉路由添加了但是在next()之后执行的，所以我们没法导航到相应的界面。
+		// 这里使用变量 isAddRoute 变量做记录，直到找到相应的路由以后，把值设置为false然后走else执行next(), 整个流程就走完了，路由也就添加完了。
+	}
+	next()
+})
+
+router.afterEach(() => {
+	NProgress.done()
 })
 
 export default router

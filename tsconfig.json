@@ -13,7 +13,7 @@
     "lib": ["esnext", "dom"], // 指定项目运行时使用的库。此处为支持esnext和dom语法
     "baseUrl": "./", // 引入包的路径,表示从当前路径开始引入
     "isolatedModules": true,
-    "types": ["element-plus/global", "vite-plugin-svg-icons/client"],  // 需要包含的类型声明文件名列表
+    "types": ["vite/client", "element-plus/global", "vite-plugin-svg-icons/client"],  // 需要包含的类型声明文件名列表
     "paths": {
       // 默认配置在了vite.config.ts中，还需要再这里在配置一次
       "@/*":["src/*"] // @符号的真实含义 还需要配置vite别名 和declare module
