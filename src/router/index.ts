@@ -105,8 +105,9 @@ router.beforeEach(async (to, from, next) => {
 		// 如果to找不到对应的路由那么他会再执行一次beforeEach((to, from, next))直到找到对应的路由，
 		// 我们的问题在于页面刷新以后异步获取数据，直接执行next()感觉路由添加了但是在next()之后执行的，所以我们没法导航到相应的界面。
 		// 这里使用变量 isAddRoute 变量做记录，直到找到相应的路由以后，把值设置为false然后走else执行next(), 整个流程就走完了，路由也就添加完了。
+	} else {
+		next()
 	}
-	next()
 })
 
 router.afterEach(() => {
