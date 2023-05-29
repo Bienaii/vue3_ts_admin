@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import {} from 'vue'
 import Hamburger from '@/components/Hamburger/index.vue'
 import useAppStore from '@/store/modules/app'
 const appStore = useAppStore()

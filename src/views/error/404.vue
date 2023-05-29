@@ -34,8 +34,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useRouter } from "vue-router";
 const router = useRouter()
 const message = computed(() => {
   return '找不到网页！'

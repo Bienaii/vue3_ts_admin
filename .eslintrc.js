@@ -9,7 +9,8 @@ module.exports = {
     // 继承了哪些规则，别人写好的规则拿来用
     'eslint:recommended',
     'plugin:vue/vue3-essential', // eslint-plugin-vue
-    'plugin:@typescript-eslint/recommended' // typescript 规则
+    'plugin:@typescript-eslint/recommended', // typescript 规则
+    './.eslintrc-auto-import.json' // 自动按需引入生成的规则
   ],
   overrides: [
     {

@@ -37,6 +37,8 @@
     "minimist": "^1.2.8",
     "sass": "^1.62.1",
     "typescript": "^5.0.4",
+    "unplugin-auto-import": "^0.16.2",
+    "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.5",
     "vite-plugin-mock": "^3.0.0",
     "vite-plugin-svg-icons": "^2.0.1",

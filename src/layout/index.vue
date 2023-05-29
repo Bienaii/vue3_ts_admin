@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import AppMain from './components/AppMain/index.vue'
 import NavBar from './components/NavBar/index.vue'
 import SideBar from './components/SideBar/index.vue'
