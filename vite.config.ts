@@ -16,6 +16,15 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
       port: 8088,
       host: '0.0.0.0',
       open: true, // 自动打开浏览器
+			proxy: {
+				// 代理配置
+				'/dev-api': {
+					// 本地服务
+					target: 'http://192.168.250.91:3001',
+					changeOrigin: true,
+					rewrite: p => p.replace(/^\/dev-api/, '')
+				}
+			}
     },
 		plugins: createPlugins(env, command),
     css: {

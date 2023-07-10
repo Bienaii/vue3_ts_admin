@@ -1,7 +1,8 @@
 import request from '@/utils/request'
-export const getInfo = () => {
+
+export const getUser = () => {
   return request({
-    url: '/mock/user/getInfo',
-    method: 'get'
+    url: '/user/getUser',
+    method: 'post'
   })
 }

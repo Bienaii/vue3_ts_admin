@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { getInfo } from '@/api/user'
+import { getUser } from '@/api/user'
 export const useIndexStore = defineStore('index', () => {
 	const username = ref()
 	const age = ref()
@@ -9,7 +9,7 @@ export const useIndexStore = defineStore('index', () => {
 	// 获取用户信息
 	const getUserInfo = async (): Promise<void> => {
 		try {
-			const res = await getInfo()
+			const res = await getUser()
 			username.value = res.data.username
 			age.value = res.data.age
 			sex.value = res.data.sex

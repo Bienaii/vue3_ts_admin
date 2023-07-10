@@ -6,6 +6,7 @@
 </template>
 <script lang="ts" setup>
 import { useIndexStore } from '@/store'
+import { getUser } from '@/api/user'
 
 const router = useRouter()
 const indexInfo = useIndexStore()
@@ -14,6 +15,15 @@ const toLogin = () => {
     name: 'Login'
   })
 }
+const getData = async () => {
+  try {
+    const rsp = await getUser()
+    console.log(rsp, 'getdata');
+    
+  } catch (error) {}
+}
 
-onMounted(() => {})
+onMounted(() => {
+  getData()
+})
 </script>

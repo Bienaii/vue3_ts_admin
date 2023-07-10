@@ -2,7 +2,7 @@ import request from '@/utils/request'
 // 获取路由
 export const getRouters = () => {
   return request({
-    url: '/mock/getRouters',
-    method: 'get'
+    url: '/user/getRouters',
+    method: 'post'
   })
 }
